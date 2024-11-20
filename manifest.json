@@ -8,9 +8,6 @@
         "service_worker": "background.js",
         "type": "module"
     },
-    "action": {
-        "default_popup": "popup.html"
-    },
     "chrome_url_overrides": {
         "newtab": "newTab.html"
     },
