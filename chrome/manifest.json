@@ -8,7 +8,6 @@
     },
     "permissions": ["storage"],
     "host_permissions": [
-        "https://zenquotes.io/*",
         "https://unpkg.com/*"
     ],
     "action": {

@@ -1,12 +1,11 @@
 importScripts('libs/browser-polyfill.min.js')
-
 // Log a message when the extension is installed
 browser.runtime.onInstalled.addListener(() => {
     console.log("Mood-Boosting Quotes extension installed!");
 });
 
 async function getRandomQuote() {
-    const apiUrl = 'https://zenquotes.io/api/random'
+    const apiUrl = 'https://qapi.vercel.app/api/random'
     try {
         const response = await fetch(apiUrl);
         console.log("Response", response);
@@ -15,8 +14,8 @@ async function getRandomQuote() {
         }
         const data = await response.json();
         // Return the content and author
-        const quote = data[0]?.q || "Quote not found";
-        const author = data[0]?.a || "Author not found"
+        const quote = data.quote || "Quote not found";
+        const author = data.author || "Author not found"
         console.log("Quote Data:", data);
         return `${quote} - ${author}`;
     } catch (error) {
@@ -26,7 +25,7 @@ async function getRandomQuote() {
 }
 
 // Listen for messages from other parts of the extension
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === "getQuote") {
         getRandomQuote().then((quote) => {
             sendResponse({ quote });
