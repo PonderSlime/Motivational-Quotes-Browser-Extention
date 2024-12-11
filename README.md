@@ -1,4 +1,5 @@
 # Motivational Quotes Chrome Extention
+Here from High Seas? THe demo link won't let me have the repo download link, so you wil have to download it manually 😔 
 This is my unsuccesful browser extention that adds motivational quotes to the new tab screen! It does work though!
 Installation instructions:
 
